@@ -79,35 +79,37 @@ str(df)
 hist(df$Price)
 ```
 
-![](Assignment6-directoryID_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](Assignment6-WK0083_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
 d <- density(df$Price)
 plot(d)
 ```
 
-![](Assignment6-directoryID_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+![](Assignment6-WK0083_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
 
 ### Q3. 1) (5pts) Get a subset of data with postal code as “98178”,“98146” and “98118”. 2) (10pts) Draw a scatter plot with the subset data. It has Sqft_Area in x-axis, Price in y-axis. The dots are colored by postal code.
 
 ``` r
 subset <- df[!is.na(df$Postal)&(df$Postal==98178)|(df$Postal==98146)|(df$Postal==98118),]
-ggplot(data=subset)+
+a <- ggplot(data=subset)+
   geom_point(mapping = aes(x=Sqft_Area,y=Price),color=subset$Postal)
+a
 ```
 
-![](Assignment6-directoryID_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](Assignment6-WK0083_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ### Q4. (10pts) Randomly choose a dataset you are interested. You may also keep using the hourseprice dataset. Draw a scatter plot matrix. What do you find? Write 2-3 sentences about your finding. Remember to write the sentences outside of code chunk.
 
 ``` r
-ggplot(data=df)+
+d <- ggplot(data=df)+
   geom_point(mapping = aes(x=Lot_Area,y=Price))
+d
 ```
 
     ## Warning: Removed 82 rows containing missing values (geom_point).
 
-![](Assignment6-directoryID_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](Assignment6-WK0083_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 ``` r
 #I was expecting that lot area would rise with price but, there are some properties with large lot area and low prices
@@ -116,10 +118,11 @@ ggplot(data=df)+
 ### Q5. (10pts) Choose any three variables from Q4 and draw a plot to explore the relations of the three variables.
 
 ``` r
-ggplot(df, aes( x = SchoolRating,y = Price, color = Age)) +
+p <- ggplot(df, aes( x = SchoolRating,y = Price, color = Age)) +
   geom_point()
+p
 ```
 
     ## Warning: Removed 2589 rows containing missing values (geom_point).
 
-![](Assignment6-directoryID_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](Assignment6-WK0083_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
